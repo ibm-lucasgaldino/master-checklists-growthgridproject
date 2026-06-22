@@ -480,9 +480,248 @@
         <!-- Tab 4: New License -->
         <div id="tab4" class="tab-content">
             <h2>New License – Check List</h2>
-            <div class="placeholder">
-                <p>⏳ Awaiting instructions...</p>
-                <p>This section will be configured once requirements are provided.</p>
+            
+            <div class="form-section">
+                <!-- Validation Tab Section -->
+                <h3 style="color: #0f62fe; margin-bottom: 15px; font-size: 18px;">Validation Tab</h3>
+                
+                <div class="form-group">
+                    <label class="section-label">Automatic/Manual:</label>
+                    <div class="checkbox-group">
+                        <label>
+                            <input type="radio" name="autoManual" value="Automatic">
+                            Automatic
+                        </label>
+                        <label>
+                            <input type="radio" name="autoManual" value="Manual">
+                            Manual
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="section-label">Parent/Dispute:</label>
+                    <div class="checkbox-group">
+                        <label>
+                            <input type="radio" name="parentDispute" value="Parent">
+                            Parent
+                        </label>
+                        <label>
+                            <input type="radio" name="parentDispute" value="Dispute">
+                            Dispute
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="section-label">Debit/Credit:</label>
+                    <div class="checkbox-group">
+                        <label>
+                            <input type="radio" name="debitCredit" value="Credit">
+                            Credit
+                        </label>
+                        <label>
+                            <input type="radio" name="debitCredit" value="Debit">
+                            Debit
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="section-label">GOE/NGOE:</label>
+                    <div class="checkbox-group">
+                        <label>
+                            <input type="radio" name="goeNgoe" value="GOE">
+                            GOE
+                        </label>
+                        <label>
+                            <input type="radio" name="goeNgoe" value="NGOE">
+                            NGOE
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="section-label">Account CMR approved is the same in Government Check Results:</label>
+                    <div class="checkbox-group">
+                        <label>
+                            <input type="radio" name="accountCMR" value="yes">
+                            Yes
+                        </label>
+                        <label>
+                            <input type="radio" name="accountCMR" value="no">
+                            No (to review)
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="section-label">If applicable, was the dispute type field filled in according to the case type (e.g: clawback flag, exception flag):</label>
+                    <div class="checkbox-group">
+                        <label>
+                            <input type="radio" name="disputeTypeField" value="yes">
+                            Yes
+                        </label>
+                        <label>
+                            <input type="radio" name="disputeTypeField" value="no">
+                            No (to review)
+                        </label>
+                        <label>
+                            <input type="radio" name="disputeTypeField" value="notApplicable">
+                            Not applicable
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="section-label">Validation Results checklist is green:</label>
+                    <div class="checkbox-group">
+                        <label>
+                            <input type="radio" name="validationResults" value="yes">
+                            Yes
+                        </label>
+                        <label>
+                            <input type="radio" name="validationResults" value="no">
+                            No (to review)
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="section-label">The PNs are eligible on the product table:</label>
+                    <div class="checkbox-group">
+                        <label>
+                            <input type="radio" name="pnsEligible" value="yes">
+                            Yes
+                        </label>
+                        <label>
+                            <input type="radio" name="pnsEligible" value="no">
+                            No (to review)
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="section-label">Approved DRPG in DMT DR matches with product table:</label>
+                    <div class="checkbox-group">
+                        <label>
+                            <input type="radio" name="drpgMatches" value="yes">
+                            Yes
+                        </label>
+                        <label>
+                            <input type="radio" name="drpgMatches" value="no">
+                            No (to review)
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Attachments Section -->
+                <h3 style="color: #0f62fe; margin-top: 30px; margin-bottom: 15px; font-size: 18px;">Attachments - If Applicable</h3>
+
+                <div class="form-group">
+                    <label class="section-label">Are all the backups attached? You can check some examples in the list below:</label>
+                    <div class="checkbox-group">
+                        <label>
+                            <input type="checkbox" name="attachments" value="Exceptions approved from claim forms">
+                            Exceptions approved from claim forms
+                        </label>
+                        <label>
+                            <input type="checkbox" name="attachments" value="Concessions">
+                            Concessions
+                        </label>
+                        <label>
+                            <input type="checkbox" name="attachments" value="Blanket approvals (Martha approval, VA02 approval)">
+                            Blanket approvals (Martha approval, VA02 approval)
+                        </label>
+                        <label>
+                            <input type="checkbox" name="attachments" value="Support calculation">
+                            Support calculation
+                        </label>
+                        <label>
+                            <input type="checkbox" name="attachments" value="Engage Support confirmation">
+                            Engage Support confirmation
+                        </label>
+                        <label>
+                            <input type="checkbox" name="attachments" value="Ticket resolutions">
+                            Ticket resolutions
+                        </label>
+                        <label>
+                            <input type="checkbox" name="attachments" value="Disputed email (BP/VAD or other)">
+                            Disputed email (BP/VAD or other)
+                        </label>
+                        <label>
+                            <input type="checkbox" name="attachments" value="Document of case validation">
+                            Document of case validation
+                        </label>
+                        <label>
+                            <input type="checkbox" name="attachments" value="None">
+                            None
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="section-label">All the comments are added (e.g summary of the error):</label>
+                    <div class="checkbox-group">
+                        <label>
+                            <input type="radio" name="commentsAdded" value="yes">
+                            Yes
+                        </label>
+                        <label>
+                            <input type="radio" name="commentsAdded" value="no">
+                            No (to add)
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Calculation Tab Section -->
+                <h3 style="color: #0f62fe; margin-top: 30px; margin-bottom: 15px; font-size: 18px;">Calculation Tab</h3>
+
+                <div class="form-group">
+                    <label class="section-label">All the bonus percentages are correct:</label>
+                    <div class="checkbox-group">
+                        <label>
+                            <input type="radio" name="bonusPercentages" value="yes">
+                            Yes
+                        </label>
+                        <label>
+                            <input type="radio" name="bonusPercentages" value="no">
+                            No (to review)
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="section-label">Based on the product group approved, all the eligible incentives (e.g. BSI, PFI or STA) are included in the calculation:</label>
+                    <div class="checkbox-group">
+                        <label>
+                            <input type="radio" name="eligibleIncentives" value="yes">
+                            Yes
+                        </label>
+                        <label>
+                            <input type="radio" name="eligibleIncentives" value="no">
+                            No (to review)
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="section-label">All the amounts are correct:</label>
+                    <div class="checkbox-group">
+                        <label>
+                            <input type="radio" name="amountsCorrect" value="yes">
+                            Yes
+                        </label>
+                        <label>
+                            <input type="radio" name="amountsCorrect" value="no">
+                            No (to review)
+                        </label>
+                    </div>
+                </div>
+
+                <button class="generate-btn" onclick="generateTab4ValidationText()">Generate Text for Validation</button>
+
+                <div id="validationResultTab4" class="validation-result"></div>
             </div>
         </div>
 

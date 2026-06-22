@@ -320,6 +320,142 @@ function generateTab3ValidationText() {
     resultDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 }
 
+// Generate validation text for Tab 4 (New License)
+function generateTab4ValidationText() {
+    // Get all form values - Validation Tab
+    const autoManual = document.querySelector('input[name="autoManual"]:checked');
+    const parentDispute = document.querySelector('input[name="parentDispute"]:checked');
+    const debitCredit = document.querySelector('input[name="debitCredit"]:checked');
+    const goeNgoe = document.querySelector('input[name="goeNgoe"]:checked');
+    const accountCMR = document.querySelector('input[name="accountCMR"]:checked');
+    const disputeTypeField = document.querySelector('input[name="disputeTypeField"]:checked');
+    const validationResults = document.querySelector('input[name="validationResults"]:checked');
+    const pnsEligible = document.querySelector('input[name="pnsEligible"]:checked');
+    const drpgMatches = document.querySelector('input[name="drpgMatches"]:checked');
+    
+    // Get attachments
+    const attachments = document.querySelectorAll('input[name="attachments"]:checked');
+    const attachmentValues = Array.from(attachments).map(a => a.value);
+    
+    // Get comments and calculation fields
+    const commentsAdded = document.querySelector('input[name="commentsAdded"]:checked');
+    const bonusPercentages = document.querySelector('input[name="bonusPercentages"]:checked');
+    const eligibleIncentives = document.querySelector('input[name="eligibleIncentives"]:checked');
+    const amountsCorrect = document.querySelector('input[name="amountsCorrect"]:checked');
+
+    // Validate that all required fields are filled
+    if (!autoManual || !parentDispute || !debitCredit || !goeNgoe ||
+        !accountCMR || !disputeTypeField || !validationResults ||
+        !pnsEligible || !drpgMatches || attachmentValues.length === 0 ||
+        !commentsAdded || !bonusPercentages || !eligibleIncentives || !amountsCorrect) {
+        alert('Please complete all fields before generating validation text.');
+        return;
+    }
+
+    // Determine eligibility
+    // disputeTypeField can be "yes" or "notApplicable" to be eligible
+    const disputeTypeEligible = (disputeTypeField.value === 'yes' || disputeTypeField.value === 'notApplicable');
+    
+    const isEligible =
+        accountCMR.value === 'yes' &&
+        disputeTypeEligible &&
+        validationResults.value === 'yes' &&
+        pnsEligible.value === 'yes' &&
+        drpgMatches.value === 'yes' &&
+        commentsAdded.value === 'yes' &&
+        bonusPercentages.value === 'yes' &&
+        eligibleIncentives.value === 'yes' &&
+        amountsCorrect.value === 'yes';
+
+    // Build the validation text
+    let validationHTML = '<h3>Validation Summary</h3>';
+    
+    // Validation Tab Section
+    validationHTML += '<h4 style="color: #0f62fe; margin-top: 20px; margin-bottom: 10px;">Validation Tab</h4>';
+    validationHTML += `<p><strong>Type:</strong> ${autoManual.value}</p>`;
+    validationHTML += `<p><strong>Parent/Dispute:</strong> ${parentDispute.value}</p>`;
+    validationHTML += `<p><strong>Debit/Credit:</strong> ${debitCredit.value}</p>`;
+    validationHTML += `<p><strong>GOE/NGOE:</strong> ${goeNgoe.value}</p>`;
+    
+    // Account CMR
+    const accountStatus = accountCMR.value === 'yes' ? '✅' : '❌';
+    validationHTML += `<p><strong>Account CMR approved is the same in Government Check Results:</strong> ${accountCMR.value === 'yes' ? 'Yes' : 'No (to review)'} ${accountStatus}</p>`;
+    
+    // Dispute type field
+    let disputeStatus, disputeText;
+    if (disputeTypeField.value === 'yes') {
+        disputeStatus = '✅';
+        disputeText = 'Yes';
+    } else if (disputeTypeField.value === 'notApplicable') {
+        disputeStatus = '✅';
+        disputeText = 'Not applicable';
+    } else {
+        disputeStatus = '❌';
+        disputeText = 'No (to review)';
+    }
+    validationHTML += `<p><strong>Dispute type field filled correctly:</strong> ${disputeText} ${disputeStatus}</p>`;
+    
+    // Validation Results
+    const validationStatus = validationResults.value === 'yes' ? '✅' : '❌';
+    validationHTML += `<p><strong>Validation Results checklist is green:</strong> ${validationResults.value === 'yes' ? 'Yes' : 'No (to review)'} ${validationStatus}</p>`;
+    
+    // PNs eligible
+    const pnsStatus = pnsEligible.value === 'yes' ? '✅' : '❌';
+    validationHTML += `<p><strong>The PNs are eligible on the product table:</strong> ${pnsEligible.value === 'yes' ? 'Yes' : 'No (to review)'} ${pnsStatus}</p>`;
+    
+    // DRPG matches
+    const drpgStatus = drpgMatches.value === 'yes' ? '✅' : '❌';
+    validationHTML += `<p><strong>Approved DRPG in DMT DR matches with product table:</strong> ${drpgMatches.value === 'yes' ? 'Yes' : 'No (to review)'} ${drpgStatus}</p>`;
+    
+    // Attachments Section
+    validationHTML += '<h4 style="color: #0f62fe; margin-top: 20px; margin-bottom: 10px;">Attachments</h4>';
+    
+    const hasNoneAttachment = attachmentValues.includes('None');
+    if (hasNoneAttachment) {
+        validationHTML += `<p><strong>Backups attached:</strong> None</p>`;
+    } else {
+        validationHTML += `<p><strong>Backups attached:</strong></p><ul style="margin-left: 20px;">`;
+        attachmentValues.forEach(att => {
+            validationHTML += `<li>${att}</li>`;
+        });
+        validationHTML += `</ul>`;
+    }
+    
+    // Comments
+    const commentsStatus = commentsAdded.value === 'yes' ? '✅' : '❌';
+    validationHTML += `<p><strong>Comments added:</strong> ${commentsAdded.value === 'yes' ? 'Yes' : 'No (to add)'} ${commentsStatus}</p>`;
+    
+    // Calculation Tab Section
+    validationHTML += '<h4 style="color: #0f62fe; margin-top: 20px; margin-bottom: 10px;">Calculation Tab</h4>';
+    
+    // Bonus percentages
+    const bonusStatus = bonusPercentages.value === 'yes' ? '✅' : '❌';
+    validationHTML += `<p><strong>Bonus percentages correct:</strong> ${bonusPercentages.value === 'yes' ? 'Yes' : 'No (to review)'} ${bonusStatus}</p>`;
+    
+    // Eligible incentives
+    const incentivesStatus = eligibleIncentives.value === 'yes' ? '✅' : '❌';
+    validationHTML += `<p><strong>Eligible incentives included:</strong> ${eligibleIncentives.value === 'yes' ? 'Yes' : 'No (to review)'} ${incentivesStatus}</p>`;
+    
+    // Amounts correct
+    const amountsStatus = amountsCorrect.value === 'yes' ? '✅' : '❌';
+    validationHTML += `<p><strong>All amounts correct:</strong> ${amountsCorrect.value === 'yes' ? 'Yes' : 'No (to review)'} ${amountsStatus}</p>`;
+    
+    // Final decision
+    const finalDecision = isEligible
+        ? 'Eligible to proceed ✅'
+        : 'Review required - Not all criteria met ⚠️';
+    
+    validationHTML += `<p class="final-decision"><strong>Final decision validation:</strong> ${finalDecision}</p>`;
+
+    // Display the result
+    const resultDiv = document.getElementById('validationResultTab4');
+    resultDiv.innerHTML = validationHTML;
+    resultDiv.className = 'validation-result show ' + (isEligible ? 'eligible' : 'not-eligible');
+    
+    // Scroll to result
+    resultDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
 // Add event listeners when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
     console.log('Renewal Checklist Tool loaded successfully');

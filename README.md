@@ -58,10 +58,70 @@ The system automatically determines eligibility based on:
 All criteria must be "Yes" for overall eligibility.
 
 ### Tab 3: Quarterly SW VAD rebates – Check List
-*Awaiting instructions*
+Complete validation checklist with the following criteria:
+- Rebate Type (SW VAD Quarterly Rebates or SW ESA Tech Broker Quarterly Rebates)
+- Distributor validation according to masterlist
+- Programs involved (multiple selection):
+  - IBM Cloud, NL On Prem, NL Subscription, Public Client Promo
+  - Reinstatement Trade Up, Renew Subscription, Renew On time
+  - SaaS New Renewal, Subscription License Upgrade, SW Support
+  - Cloud Aggregator, ESA Tech Broker
+- Amounts validation according to masterlist
+- Additional approval requirement (for amounts higher than 25K)
+- Approved files attachment
+
+**Eligibility Criteria:**
+- Distributor validated: Yes
+- Amounts validated: Yes
+- Files attached: Yes
+- Additional approval is informational (doesn't block eligibility)
 
 ### Tab 4: New License – Check List
-*Awaiting instructions*
+Complete validation checklist organized in three sections:
+
+#### Validation Tab
+- **Automatic/Manual**: Type selection (informational)
+- **Parent/Dispute**: Case type (informational)
+- **Debit/Credit**: Transaction type (informational)
+- **GOE/NGOE**: Government/Non-Government Entity (informational)
+- **Account CMR approved**: Verification against Government Check Results
+- **Dispute type field**: Validation of case type fields (if applicable)
+- **Validation Results checklist**: Green status verification
+- **PNs eligible**: Product Number eligibility on product table
+- **Approved DRPG**: DMT DR match with product table
+
+#### Attachments - If Applicable
+Backup documentation checklist (multiple selection):
+- Exceptions approved from claim forms
+- Concessions
+- Blanket approvals (Martha approval, VA02 approval)
+- Support calculation
+- Engage Support confirmation
+- Ticket resolutions
+- Disputed email (BP/VAD or other)
+- Document of case validation
+- None
+
+**Comments**: Summary of errors and relevant information
+
+#### Calculation Tab
+- **Bonus percentages**: Verification of correct percentages
+- **Eligible incentives**: BSI, PFI, or STA inclusion based on product group
+- **All amounts**: Verification of correct amounts
+
+**Eligibility Criteria:**
+All of the following must be "Yes" for eligibility:
+- Account CMR approved: Yes
+- Dispute type field: Yes (or Not applicable)
+- Validation Results checklist: Yes
+- PNs eligible: Yes
+- Approved DRPG matches: Yes
+- Comments added: Yes
+- Bonus percentages correct: Yes
+- Eligible incentives included: Yes
+- All amounts correct: Yes
+
+The fields Automatic/Manual, Parent/Dispute, Debit/Credit, and GOE/NGOE are informational and don't affect eligibility.
 
 ### Tab 5: Hardware – Check List
 *Awaiting instructions*
