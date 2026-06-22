@@ -410,15 +410,14 @@ function generateTab4ValidationText() {
     // Attachments Section
     validationHTML += '<h4 style="color: #0f62fe; margin-top: 20px; margin-bottom: 10px;">Attachments</h4>';
     
-    const hasNoneAttachment = attachmentValues.includes('None');
-    if (hasNoneAttachment) {
-        validationHTML += `<p><strong>Backups attached:</strong> None</p>`;
-    } else {
+    if (attachmentValues.length > 0) {
         validationHTML += `<p><strong>Backups attached:</strong></p><ul style="margin-left: 20px;">`;
         attachmentValues.forEach(att => {
             validationHTML += `<li>${att}</li>`;
         });
         validationHTML += `</ul>`;
+    } else {
+        validationHTML += `<p><strong>Backups attached:</strong> None selected</p>`;
     }
     
     // Comments

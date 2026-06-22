@@ -94,13 +94,12 @@ Complete validation checklist organized in three sections:
 Backup documentation checklist (multiple selection):
 - Exceptions approved from claim forms
 - Concessions
-- Blanket approvals (Martha approval, VA02 approval)
+- Blanket approvals (e.g., Martha approval, VA02 approval)
 - Support calculation
 - Engage Support confirmation
 - Ticket resolutions
 - Disputed email (BP/VAD or other)
-- Document of case validation
-- None
+- Case Validation Evidence (e.g., NL deal, SA38, VA02 etc.)
 
 **Comments**: Summary of errors and relevant information
 
