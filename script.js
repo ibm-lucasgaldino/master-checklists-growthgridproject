@@ -28,6 +28,7 @@ function generateValidationText() {
     const materialGroup = document.querySelector('input[name="materialGroup"]:checked');
     const bpEU = document.querySelector('input[name="bpEU"]:checked');
     const payment = document.querySelector('input[name="payment"]:checked');
+    const ibmIdVADSiteNumber = document.querySelector('input[name="ibmIdVADSiteNumber"]:checked');
     const filesAttached = document.querySelector('input[name="filesAttachedTab1"]:checked');
     
     // Get all checked program types
@@ -36,7 +37,7 @@ function generateValidationText() {
 
     // Validate that all required fields are filled
     if (!annuities || !preferredVAD || !bpa || !eligiblePN ||
-        !resellerID || !materialGroup || !bpEU || !payment || !filesAttached || programTypeValues.length === 0) {
+        !resellerID || !materialGroup || !bpEU || !payment || !ibmIdVADSiteNumber || !filesAttached || programTypeValues.length === 0) {
         alert('Please complete all fields before generating validation text.');
         return;
     }
@@ -93,6 +94,11 @@ function generateValidationText() {
     // Files Attached
     const filesStatus = filesAttached.value === 'yes' ? '✅' : '❌';
     validationHTML += `<p><strong>The approved files was attached:</strong> ${filesAttached.value === 'yes' ? 'Yes' : 'No'} ${filesStatus}</p>`;
+
+    const ibmIdVADStatus = ibmIdVADSiteNumber.value === 'yes'
+        ? 'Eligible ✅'
+        : 'Double check ⚠️';
+    validationHTML += `<p><strong>IBM ID inserted in VAD Site number (e.g. user@ibm.com):</strong> ${ibmIdVADSiteNumber.value === 'yes' ? 'Yes' : 'No'} (${ibmIdVADStatus})</p>`;
     
     // Final decision
     const finalDecision = isEligible
@@ -332,6 +338,7 @@ function generateTab4ValidationText() {
     const validationResults = document.querySelector('input[name="validationResults"]:checked');
     const pnsEligible = document.querySelector('input[name="pnsEligible"]:checked');
     const drpgMatches = document.querySelector('input[name="drpgMatches"]:checked');
+    const ibmIdExceptionReference = document.querySelector('input[name="ibmIdExceptionReference"]:checked');
     
     // Get attachments
     const attachments = document.querySelectorAll('input[name="attachments"]:checked');
@@ -346,7 +353,7 @@ function generateTab4ValidationText() {
     // Validate that all required fields are filled
     if (!autoManual || !parentDispute || !debitCredit || !goeNgoe ||
         !accountCMR || !disputeTypeField || !validationResults ||
-        !pnsEligible || !drpgMatches || attachmentValues.length === 0 ||
+        !pnsEligible || !drpgMatches || !ibmIdExceptionReference || attachmentValues.length === 0 ||
         !commentsAdded || !bonusPercentages || !eligibleIncentives || !amountsCorrect) {
         alert('Please complete all fields before generating validation text.');
         return;
@@ -406,6 +413,11 @@ function generateTab4ValidationText() {
     // DRPG matches
     const drpgStatus = drpgMatches.value === 'yes' ? '✅' : '❌';
     validationHTML += `<p><strong>Approved DRPG in DMT DR matches with product table:</strong> ${drpgMatches.value === 'yes' ? 'Yes' : 'No (to review)'} ${drpgStatus}</p>`;
+
+    const ibmIdExceptionStatus = ibmIdExceptionReference.value === 'yes'
+        ? 'Eligible ✅'
+        : 'Double check ⚠️';
+    validationHTML += `<p><strong>IBM ID inserted in Exception / Concession Reference (e.g. user@ibm.com):</strong> ${ibmIdExceptionReference.value === 'yes' ? 'Yes' : 'No'} (${ibmIdExceptionStatus})</p>`;
     
     // Attachments Section
     validationHTML += '<h4 style="color: #0f62fe; margin-top: 20px; margin-bottom: 10px;">Attachments</h4>';
